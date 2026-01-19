@@ -43,12 +43,18 @@ O projeto está estruturado em **três etapas fundamentais** de implementação:
 
 ## 📊 Diagrama de Arquitetura
 
-![Abstergo Cloud Architecture](https://via.placeholder.com/800x400.png?text=Diagrama+de+Arquitetura+Abstergo+Cloud)
+![Abstergo Cloud Architecture](./A_diagram_illustrates_the_cloud_modernization_and_.png)
 
 > **Legenda:**  
 > - **Camada de Dados (S3)** → Armazenamento seguro e compliance.  
 > - **Processamento Científico (AWS Batch + Spot)** → Treinamento e simulação.  
-> - **Persistência Espacial (Aurora Serverless + PostGIS)** → GeoAI queries e analytics.
+> - **Persistência Espacial (Aurora Serverless + PostGIS)** → GeoAI queries e analytics.  
+
+### 🏆 Diagramas de Excelência
+
+![Pilar de Sustentabilidade e Segurança](https://img.shields.io/badge/Sustentabilidade-Segurança-green?style=flat-square)
+![Pilar de Otimização de Custos](https://img.shields.io/badge/Otimização-Custos-orange?style=flat-square)
+![Pilar de Confiabilidade e Operação](https://img.shields.io/badge/Confiabilidade-Operacional-blue?style=flat-square)
 
 ---
 
