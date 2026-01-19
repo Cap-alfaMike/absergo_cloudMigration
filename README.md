@@ -41,65 +41,30 @@ O projeto está estruturado em **três etapas fundamentais** de implementação:
 
 ---
 
-## 📊 Diagrama de Arquitetura
+## 📊 Diagrama de Arquitetura (Mermaid)
 
-![Abstergo Cloud Architecture](./A_diagram_illustrates_the_cloud_modernization_and_.png)
+```mermaid
+flowchart LR
+    A[📦 Camada de Dados: Amazon S3] -->|Data Transfer| B[⚡ Processamento Científico: AWS Batch + EC2 Spot]
+    B -->|Processed Data| C[💾 Persistência Espacial: Aurora Serverless v2 + PostGIS]
+    C -->|GeoAI Queries| B
+    C -->|Analytics & Insights| D[🌐 Dashboard / Applications]
 
-> **Legenda:**  
-> - **Camada de Dados (S3)** → Armazenamento seguro e compliance.  
-> - **Processamento Científico (AWS Batch + Spot)** → Treinamento e simulação.  
-> - **Persistência Espacial (Aurora Serverless + PostGIS)** → GeoAI queries e analytics.  
+    subgraph DATA_LAYER["Camada de Dados"]
+        A
+        A -->|Compliance| A1[FDA / ANVISA]
+        A -->|Lifecycle| A2[Intelligent-Tiering & Object Lock]
+    end
 
-### 🏆 Diagramas de Excelência
+    subgraph PROCESS_LAYER["Processamento Científico"]
+        B
+        B -->|Containers| B1[Container Jobs]
+        B -->|Compute| B2[EC2 Spot (Graviton / ARM)]
+        B -->|ML & GeoSim| B3[Histogram GB / Carbon Simulation]
+    end
 
-![Pilar de Sustentabilidade e Segurança](https://img.shields.io/badge/Sustentabilidade-Segurança-green?style=flat-square)
-![Pilar de Otimização de Custos](https://img.shields.io/badge/Otimização-Custos-orange?style=flat-square)
-![Pilar de Confiabilidade e Operação](https://img.shields.io/badge/Confiabilidade-Operacional-blue?style=flat-square)
-
----
-
-## 💰 Estimativa de Custos (Monthly Projections)
-
-| Serviço              | Especificação            | Custo (USD) |
-|---------------------|-------------------------|------------|
-| Amazon S3           | 50 TB (Híbrido)         | $1,120.00  |
-| AWS Batch / Spot    | 5.000 vCPU-Horas        | $185.00    |
-| Amazon Aurora v2    | 2-16 ACUs (Média 4 ACUs)| $460.00    |
-| Data Transfer       | 1 TB Outbound           | $120.00    |
-| **Total Estimado**  |                         | **$1,885.00** |
-
-**ROI Estimado:** Redução de 65% comparado ao custo de manutenção e staff do Data Center local de performance equivalente.
-
----
-
-## ⚖️ Análise de Tradeoffs e Maturidade
-
-- **Spot vs. On-Demand:** Risco de interrupção mitigado por checkpoints em S3, priorizando economia de 90% em treinamentos de longa duração.  
-- **Serverless vs. Provisioned:** Maior custo por ACU compensado pela elasticidade total, eliminando gastos com capacidade ociosa.  
-- **Maturidade Cloud Native:** Integração de arquiteturas de **IA Agêntica** e sistemas **neuro-cognitivos** em ambiente auditável.
-
----
-
-## 👨‍💻 Responsável Técnico
-
-**Adalberto Correia**  
-*AI Engineer | Machine Learning Lead | GeoAI Specialist*  
-
-- **Especialidade:** Sistemas de inteligência de decisão ponta a ponta e aplicações orientadas a ESG.  
-- **Experiência:** Liderança em desenho de sistemas **GeoAI** e infraestruturas resilientes em contextos críticos.
-
----
-
-## 📄 Conclusão
-
-Esta arquitetura transforma a infraestrutura da **Abstergo** em um **motor de inovação**, suportando desde análises transacionais legadas até sistemas complexos de **Deep Learning** e **Urban Analytics**.
-
----
-
-## 🔗 Links Úteis
-
-- [AWS Well-Architected Framework](https://aws.amazon.com/architecture/well-architected/)  
-- [AWS S3 Documentation](https://docs.aws.amazon.com/s3/index.html)  
-- [AWS Batch Documentation](https://docs.aws.amazon.com/batch/index.html)  
-- [Aurora Serverless v2](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.html)  
-- [PostGIS Documentation](https://postgis.net/docs/)
+    subgraph SPATIAL_LAYER["Persistência Espacial"]
+        C
+        C -->|Database| C1[PostgreSQL / PostGIS]
+        C -->|Queries| C2[Geo-RAG & Spatial Analytics]
+    end
